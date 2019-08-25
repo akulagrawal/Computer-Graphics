@@ -1,0 +1,36 @@
+# Project: P4_2_Ellipse
+# Makefile created by Dev-C++ 5.11
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+RES      = P4_2_Ellipse_private.res
+OBJ      = WMain.o Ellipse.o $(RES)
+LINKOBJ  = WMain.o Ellipse.o $(RES)
+LIBS     = -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib" -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc -mwindows
+INCS     = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
+CXXINCS  = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
+BIN      = P4_2_Ellipse.exe
+CXXFLAGS = $(CXXINCS) 
+CFLAGS   = $(INCS) 
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+WMain.o: WMain.cpp
+	$(CPP) -c WMain.cpp -o WMain.o $(CXXFLAGS)
+
+Ellipse.o: Ellipse.cpp
+	$(CPP) -c Ellipse.cpp -o Ellipse.o $(CXXFLAGS)
+
+P4_2_Ellipse_private.res: P4_2_Ellipse_private.rc Ellipse.rc
+	$(WINDRES) -i P4_2_Ellipse_private.rc --input-format=rc -o P4_2_Ellipse_private.res -O coff 
+

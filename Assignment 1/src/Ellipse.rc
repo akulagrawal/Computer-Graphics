@@ -1,0 +1,8 @@
+#include <windows.h>
+#include "Ellipse.h"
+
+MyMenu MENU DISCARDABLE 
+BEGIN
+  MENUITEM "&Clear",   ID_CLEAR
+  MENUITEM "&Exit",    ID_EXIT
+END
